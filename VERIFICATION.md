@@ -4,7 +4,7 @@ Date: 11 November 2026, within the conservative official build period ending 14:
 
 ## Passed
 
-- Node test suite: 7 tests pass, covering scene counts/colors/timers, switch/explore overrides, distinct collection accounting, gate unlocking, explicit completion, timer expiration, reset, bounds, unsupported object IDs similarity ranking, and explicit collection overrides.
+- Node test suite: 8 tests pass, covering scene counts/colors/timers, switch/explore overrides, distinct collection accounting, gate unlocking, explicit completion, timer expiration, reset, bounds, unsupported object IDs similarity ranking, explicit collection overrides, all supported color modifiers, combined adjectives, and the word eleven.
 - JavaScript syntax checks on app.js and canvas-renderer.js.
 - Browser-local actual MiniLM download and inference in Chrome: default forest prompt selected forest 0.62, castle 0.43, space 0.25; live scene generated five crystals and three rules.
 - Live browser flow: a locked gate rejected early exit; interacting twice with one crystal did not double count; collecting all five opened the gate; entering the gate completed the level; restart reset the score and gate.
@@ -17,10 +17,12 @@ Date: 11 November 2026, within the conservative official build period ending 14:
 
 - Exploration prompt selected desert, generated five inspectable objects with one non-collection rule, and clicking an object showed its inspection. JSON panel and export were exercised.
 
-## Still to verify before final submission
+## Public release checks
 
-- Hosted public demo and source accessibility.
-- Final uploaded video accessibility/playback.
+- The public repository, hosted application, and demo video were independently opened without login. URLs: https://github.com/bgrubbs1/sceneweaver-victoria-vr ; https://bgrubbs1.github.io/sceneweaver-victoria-vr/ ; https://bgrubbs1.github.io/sceneweaver-victoria-vr/demo.html .
+- Hosted app.js, planner.js, and demo.mp4 matched release bytes before the final count-parser correction. Final hosted parser verification follows that correction.
+- Independent hosted real-model prompt selected Neon district (city 0.47); collection, locked/unlocked gate and explicit completion worked. The test revealed that purple modifiers blocked count parsing. All nine supported color modifiers, combined adjectives, singular switches, and the word eleven now have regression coverage.
+- The public video played in Chrome with no error, readyState 4, duration 39.966667 seconds, 1280×720. Its SHA-256 matched the tested local video.
 
 
 ## Verification limitations

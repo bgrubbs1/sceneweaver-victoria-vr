@@ -8,3 +8,6 @@ test('bounded inputs and unsupported IDs',()=>{assert.throws(()=>compile('',them
 test('semantic rankings sorted by cosine',()=>{assert.equal(rank([1,0],[{id:'a'},{id:'b'}],[[0,1],[1,0]])[0].id,'b');});
 
 test('explicit collection overrides a weaker semantic mechanic match',()=>{assert.equal(compile('Collect one red crystal in a lab',themes,[{id:'switches',score:.4}]).mechanic,'collect');});
+
+
+test('counts and colors cover every documented modifier, combined adjectives and eleven',()=>{const colors={red:0xff776f,blue:0x7cc8ff,green:0xa8f2a3,purple:0xc4a1ff,pink:0xffa4cf,gold:0xffd166,golden:0xffd166,yellow:0xffe78c,orange:0xffb26c};for(const [name,color] of Object.entries(colors)){const p=compile(`A neon metropolis with three ${name} crystals. Gather them all to unlock the exit.`,themes,collect);assert.equal(p.count,3,name);assert.equal(p.color,color,name);assert.equal(compile(`two glowing ${name} spinning switches`,themes,collect).count,2,name);}assert.equal(compile('eleven purple levers',themes,collect).count,11);assert.equal(compile('one orange switch',themes,collect).color,0xffb26c);});

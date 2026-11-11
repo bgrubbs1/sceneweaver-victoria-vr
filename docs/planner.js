@@ -13,7 +13,7 @@ export const MECHANICS = [
  {id:'switches',text:'Activate all switches, buttons, levers or pressure plates to power the door and solve a switch puzzle.'},
  {id:'explore',text:'Explore a peaceful interactive diorama, inspect objects, wander through a scene, no puzzle or challenge.'}
 ];
-export const NUMBER_WORDS={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,twelve:12};
+export const NUMBER_WORDS={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12};
 export function cosine(a,b){let s=0;for(let i=0;i<a.length;i++)s+=a[i]*b[i];return s;}
 export function rank(vector,entries,embeddings){return entries.map((entry,i)=>({id:entry.id,score:cosine(vector,embeddings[i])})).sort((a,b)=>b.score-a.score);}
 export function compile(prompt,themeScores,mechanicScores){
@@ -26,13 +26,13 @@ export function compile(prompt,themeScores,mechanicScores){
  if(/\b(collect|gather|pick up|retrieve)\b/.test(text))mechanic='collect';
  if(/\b(switch|switches|button|buttons|lever|levers|pressure plate)\b/.test(text))mechanic='switches';
  if(/\b(no puzzle|no challenge|just explore|peaceful diorama)\b/.test(text))mechanic='explore';
- const countMatch=text.match(/\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\s+(?:glowing\s+|spinning\s+|golden\s+|blue\s+|red\s+|green\s+)?(?:(?:gem|crystal|coin|orb|treasure|button|lever|plate|sphere|object)s?|switch(?:es)?)\b/);
+ const countMatch=text.match(/\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(?:(?:glowing|spinning|red|blue|green|purple|pink|gold|golden|yellow|orange)\s+)*(?:(?:gem|crystal|coin|orb|treasure|button|lever|plate|sphere|object)s?|switch(?:es)?)\b/);
  let requestedCount=countMatch?(NUMBER_WORDS[countMatch[1]]??Number(countMatch[1])):5;
  const count=Math.max(1,Math.min(12,requestedCount));
  const timerMatch=text.match(/\b(\d+)\s*(?:-\s*)?(?:second|sec)s?\b/);
  const timer=timerMatch&&!/\b(no timer|without a timer)\b/.test(text)?Math.max(10,Math.min(300,Number(timerMatch[1]))):null;
  const colorNames={red:0xff776f,blue:0x7cc8ff,green:0xa8f2a3,purple:0xc4a1ff,pink:0xffa4cf,gold:0xffd166,golden:0xffd166,yellow:0xffe78c,orange:0xffb26c};
- let color=theme.accent;const colorMatch=text.match(/\b(red|blue|green|purple|pink|gold|golden|yellow|orange)\s+(?:glowing\s+)?(?:gems?|crystals?|coins?|orbs?|switches|buttons?|spheres?)\b/);if(colorMatch)color=colorNames[colorMatch[1]];
+ let color=theme.accent;const colorMatch=text.match(/\b(red|blue|green|purple|pink|gold|golden|yellow|orange)\s+(?:(?:glowing|spinning)\s+)*(?:(?:gem|crystal|coin|orb|treasure|button|lever|plate|sphere|object)s?|switch(?:es)?)\b/);if(colorMatch)color=colorNames[colorMatch[1]];
  const entities=Array.from({length:count},(_,i)=>({id:`item-${i+1}`,type:mechanic==='switches'?'switch':'crystal',position:[Math.cos(i/count*Math.PI*2)*4.5,0.8,Math.sin(i/count*Math.PI*2)*4.5],color,active:false}));
  const rules=mechanic==='explore'?[{event:'click object',condition:'always',action:'inspect and pulse object'}]:[
  {event:'click '+(mechanic==='switches'?'switch':'crystal'),condition:'not already active',action:mechanic==='switches'?'activate switch; increment powered count':'collect crystal; increment score'},
