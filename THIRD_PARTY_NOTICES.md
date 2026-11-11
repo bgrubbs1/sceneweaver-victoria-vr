@@ -6,9 +6,10 @@ No third-party assets are claimed as entrant-created. No model was trained or fi
 | --- | --- | --- | --- |
 | Three.js, including OrbitControls | three.js authors, https://github.com/mrdoob/three.js | 0.160.1 | MIT; `licenses/THREE-MIT.txt` |
 | Transformers.js | Hugging Face / Xenova, https://github.com/huggingface/transformers.js | @xenova/transformers 2.17.2 | Apache-2.0; `licenses/APACHE-2.0.txt` |
-| ONNX Runtime Web (via Transformers.js) | Microsoft, https://github.com/microsoft/onnxruntime | dependency of pinned Transformers.js bundle | MIT; `licenses/ONNX-RUNTIME-MIT.txt` |
+| Hugging Face Jinja (bundled Transformers.js dependency) | Hugging Face, https://github.com/huggingface/huggingface.js | 0.2.2 dependency range | MIT; `licenses/HUGGINGFACE-JINJA-MIT.txt` |
+| ONNX Runtime Web (via Transformers.js) | Microsoft, https://github.com/microsoft/onnxruntime | 1.14.0 | MIT; `licenses/ONNX-RUNTIME-MIT.txt` |
 | all-MiniLM-L6-v2 sentence embedding model | Sentence Transformers contributors, https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 | pretrained model; no retraining | Apache-2.0; `licenses/APACHE-2.0.txt`; source model card documents training/provenance |
-| ONNX conversion of all-MiniLM-L6-v2 | Xenova, https://huggingface.co/Xenova/all-MiniLM-L6-v2 | quantized ONNX weights | Apache-2.0; `licenses/APACHE-2.0.txt` |
+| ONNX conversion of all-MiniLM-L6-v2 | Xenova, https://huggingface.co/Xenova/all-MiniLM-L6-v2 | quantized ONNX revision `751bff37182d3f1213fa05d7196b954e230abad9` | Apache-2.0; `licenses/APACHE-2.0.txt` |
 | DM Sans | Colophon Foundry / DM Sans project authors, https://github.com/google/fonts/tree/main/ofl/dmsans | Google Fonts web distribution | SIL Open Font License 1.1; `licenses/DM-SANS-OFL.txt` |
 | Space Grotesk | Florian Karsten / Space Grotesk project authors, https://github.com/google/fonts/tree/main/ofl/spacegrotesk | Google Fonts web distribution | SIL Open Font License 1.1; `licenses/SPACE-GROTESK-OFL.txt` |
 

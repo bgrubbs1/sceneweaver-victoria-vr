@@ -6,3 +6,5 @@ test('switch and explore explicit requests honored',()=>{assert.equal(compile('4
 test('timer expires and blocks actions until reset',()=>{const p=compile('1 crystal with 10 seconds',themes,collect);let s=initialState(p);for(let i=0;i<10;i++)s=transition(p,s,{type:'tick'});assert.equal(s.expired,true);assert.equal(transition(p,s,{type:'item',id:'item-1'}).activeIds.length,0);});
 test('bounded inputs and unsupported IDs',()=>{assert.throws(()=>compile('',themes,collect));assert.equal(compile('999 crystals',themes,collect).count,12);const p=compile('0 crystals',themes,collect);assert.equal(p.count,1);assert.deepEqual(transition(p,initialState(p),{type:'item',id:'bogus'}),initialState(p));});
 test('semantic rankings sorted by cosine',()=>{assert.equal(rank([1,0],[{id:'a'},{id:'b'}],[[0,1],[1,0]])[0].id,'b');});
+
+test('explicit collection overrides a weaker semantic mechanic match',()=>{assert.equal(compile('Collect one red crystal in a lab',themes,[{id:'switches',score:.4}]).mechanic,'collect');});

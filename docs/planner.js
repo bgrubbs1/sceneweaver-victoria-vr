@@ -23,6 +23,7 @@ export function compile(prompt,themeScores,mechanicScores){
  const theme=THEMES.find(x=>x.id===themeScores[0]?.id)||THEMES[0];
  let mechanic=mechanicScores[0]?.id||'collect';
  // Explicit instructions override similarity when unambiguous.
+ if(/\b(collect|gather|pick up|retrieve)\b/.test(text))mechanic='collect';
  if(/\b(switch|switches|button|buttons|lever|levers|pressure plate)\b/.test(text))mechanic='switches';
  if(/\b(no puzzle|no challenge|just explore|peaceful diorama)\b/.test(text))mechanic='explore';
  const countMatch=text.match(/\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|twelve)\s+(?:glowing\s+|spinning\s+|golden\s+|blue\s+|red\s+|green\s+)?(?:(?:gem|crystal|coin|orb|treasure|button|lever|plate|sphere|object)s?|switch(?:es)?)\b/);
@@ -39,7 +40,7 @@ export function compile(prompt,themeScores,mechanicScores){
  {event:'click exit gate',condition:'gate open',action:'complete level; stop timer'}
  ];
  if(timer&&mechanic!=='explore')rules.push({event:'timer reaches zero',condition:'level not complete',action:'end challenge; offer restart'});
- const notes=['The model selects a scene theme and mechanic using semantic similarity. Counts, colors and timers use explicit parsing. Geometry is procedural, not a generated mesh.'];
+ const notes=['The model selects a scene theme and mechanic using semantic similarity. Explicit action words, counts, colors and timers use parsing. Geometry is procedural, not a generated mesh.'];
  if(requestedCount!==count)notes.push(`Object count limited to ${count} for this prototype.`);
  return {schemaVersion:1,prompt:prompt.trim(),title:theme.name,theme:theme.id,mechanic,count,timer:mechanic==='explore'?null:timer,color,entities,rules,themeRanking:themeScores.slice(0,3),mechanicRanking:mechanicScores.slice(0,3),notes};
 }

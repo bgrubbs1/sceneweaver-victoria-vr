@@ -6,7 +6,7 @@
 
 - Type a short scene description. A real quantized **all-MiniLM-L6-v2** transformer runs in your browser through Transformers.js/ONNX Runtime.
 - Mean-pooled normalized embeddings and cosine similarity choose among **7 themes** (space, forest, ocean, desert, city, castle, lab) and **3 mechanics** (collect, switches, explore).
-- An explicit parser extracts supported quantities, colors and optional time limits. A deterministic compiler produces a JSON scene and safe event-condition-action rules.
+- An explicit parser extracts supported action words, quantities, colors and optional time limits. A deterministic compiler produces a JSON scene and safe event-condition-action rules.
 - The browser renders real procedural 3D geometry with Three.js. WebGL is preferred; a small Canvas2D perspective renderer projects the same 3D scene graph when WebGL is unavailable.
 - Click crystals or switches, unlock the gate, finish the level, and restart. Optional timers can expire. Keyboard-accessible controls mirror 3D object actions.
 - Inspect the rules and semantic similarity rankings. Export the JSON plan. Record an explicitly labelled automated walkthrough of the actual scene and rules.
@@ -22,7 +22,7 @@ Click **Build with local AI**. The first build downloads a roughly 23 MB quantiz
 
 ## Deliberate limits
 
-This is **not** an LLM, a general text-to-3D mesh generator, arbitrary game-code generation, or a full game engine. It composes a small vocabulary of procedural worlds and validated rules. Unrelated prompts will be mapped to a supported theme, not fulfilled literally. Similarity values are cosine scores, not calibrated probabilities. Counts are bounded to 1–12 and timers to 10–300 seconds. English is the supported input language. The model may truncate long text at its token limit.
+This is **not** an LLM, a general text-to-3D mesh generator, arbitrary game-code generation, or a full game engine. It composes a small vocabulary of procedural worlds and validated rules. Unrelated prompts will be mapped to a supported theme, not fulfilled literally. Similarity values are cosine scores, not calibrated probabilities. Explicit collection, switch and exploration instructions override the semantic mechanic ranking. Counts are bounded to 1–12 and timers to 10–300 seconds. English is the supported input language. The model may truncate long text at its token limit.
 
 Rendering uses an orbit camera rather than first-person navigation. There is no physics engine, multiplayer, persistent user storage or backend. The CPU renderer uses painter's ordering and can show minor occlusion artifacts. No headset is needed or claimed. Mobile layout exists but comprehensive mobile hardware testing has not been performed.
 
