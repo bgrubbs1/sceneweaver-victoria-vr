@@ -15,11 +15,13 @@ Date: 11 November 2026, within the conservative official build period ending 14:
 - Pinned model revision `751bff37182d3f1213fa05d7196b954e230abad9` loaded and ran successfully in Chrome. A laboratory/one-crystal/10-second-timer prompt selected lab and generated the requested collection game. Timer expiration blocked interaction; reset restored it, collection plus gate interaction completed it before expiry.
 - Recorded video: H.264, 1280×720, 30 fps, 39.966667 seconds, 266257 bytes. Full decode check passed and multiple frames were visually inspected by builder and independent reviewer. SHA-256: `a349d415feff353a40f92ce76bc49d8b07376c78030a46faf0aff8e1ced8fa60`. The actual automatically played scene and rules are labelled, not represented as manual play.
 
+- Exploration prompt selected desert, generated five inspectable objects with one non-collection rule, and clicking an object showed its inspection. JSON panel and export were exercised.
+
 ## Still to verify before final submission
 
 - Hosted public demo and source accessibility.
 - Final uploaded video accessibility/playback.
-- Exploration flow in the browser.
+
 
 ## Verification limitations
 
