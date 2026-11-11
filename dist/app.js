@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {CanvasRenderer} from './canvas-renderer.js';
-import {THEMES,MECHANICS,compile,rank,initialState,transition} from './planner.js';
+import {THEMES,MECHANICS,compile,rank,initialState,transition} from './planner.js?v=20261111-r2';
 
 const $=id=>document.getElementById(id);let extractor,themeVectors,mechanicVectors,loading,plan,state,root,gate,items=[],decor=[],scene,camera,renderer,controls,lastTick=0,recording=false,buildSerial=0;
 const viewport=$('viewport'),raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
